@@ -1,6 +1,6 @@
 ﻿body {
     margin: 0;
-    font: normal 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font: normal 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #header {
@@ -13,6 +13,7 @@
 }
 
 #header-content {
+    font-size: 0;
     max-width: 860px;
     margin: 0 auto;
     padding: 0 4px;
@@ -22,11 +23,13 @@
 }
 
 .header-item {
+    font-size: 14px;
     display: inline-block;
     padding: 6px 10px;
     cursor: pointer;
     line-height: 32px;
     transition: background-color 0.075s;
+    color: #FFF;
 }
 
     .header-item:hover {
@@ -55,8 +58,8 @@ td, th {
 }
 
 a {
-    color: #FFF;
-    text-decoration: none;
+    color: #3498DB;
+    /*text-decoration: none;*/
 }
 
 .emote {

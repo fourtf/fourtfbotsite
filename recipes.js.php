@@ -25,7 +25,7 @@ else {
         if (data.success) {
 	        if (data.data.length > 0)
         	{
-                	var html = "<table class='table table-bordered'>";
+                	var html = "<table class='table'>";
                 	html += "<thead><th>item</th><th>cost</th></thead>";
                 	html += "<tbody"
                 	for (var i = 0; i < data.data.length; i++)

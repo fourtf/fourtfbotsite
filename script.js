@@ -16,3 +16,8 @@ function addHeaderItem(x, url)
 {
     headerContent.innerHTML += "<a href='/bot/"+url+"'><div class='header-item'>"+x+"</div></a>"
 }
+
+function resize()
+{
+    id("inner-content").style.paddingTop = id("header").clientHeight + 12 + "px";
+}

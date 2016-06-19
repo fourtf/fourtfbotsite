@@ -1,14 +1,16 @@
 <html>
 <head>
     <title>nice bot bro</title>
-    <link href="/bot/skyblue.css" rel="stylesheet" />
+    <link href="/bot/skyblue.min.css" rel="stylesheet" />
     <link href="/bot/style.css" rel="stylesheet" />
     <meta name="viewport" content="width=400" />
 </head>
-<body>
+<body onresize="resize()" onload="resize()">
     <div id="header">
-        <div id="header-content" class="flex">
-            <a href="/bot"><div class="header-item"><strong>Fourtf Bot</strong></div></a>
+        <div id="header-content">
+            <a href="/bot"><div class="header-item"><img src="/img/destructoid.png" style="vertical-align:top;height:2em;margin-bottom:-2em;z-index:100"/>&nbsp;</div></a>
+            <a href="/bot/commands"><div class="header-item">Commands</div></a>
+            <a href="/bot/stats"><div class="header-item">Stats</div></a>
             <a href="/bot/recipes"><div class="header-item">Recipes</div></a>
             <a href="/bot/user"><div class="header-item">User</div></a>
             <a href="/bot/top"><div class="header-item">Top</div></a>
@@ -16,7 +18,7 @@
     </div>
     <div id="content">
         <div id="inner-content">
-            <h2>View stats by username</h2>
+            <h2>View Stats by Username</h2>
 <div class="row">
     <div class="col md-8"><input autofocus id="userinput" type="text" class="form-control" placeholder="username" /></div>
     <div class="col md-2"><a id="userlink" href="#"><div class="btn" id="viewbutton">View</div></a><br /></div>
@@ -25,7 +27,7 @@
 <br />
 <h3 id="name"></h3>
 <div class="row">
-    <div class="col md-6"><table id="stats" style="display:none" class="table table-bordered">
+    <div class="col md-6"><table id="stats" style="display:none" class="table">
     <thead><th>stat</th><th>value</th></thead>
     <tbody>
         <tr><td>points</td><td id="points"></td></tr>
@@ -76,6 +78,11 @@ else {
 	if (data.success) {
 		id("stats").style.display = ""
 		id("name").innerText = data.data.name
+		window.document.title = data.data.name + " - nice bot bro";
+		//var seconds = (Date.now() / 1000 | 0) - (data.timestamp / 1000 | 0)
+		//if (seconds > 0)
+		//  id("name").innerText += " (" + seconds + ") seconds ago";
+		
 		id("points").innerText = data.data.points
 		id("calories").innerText = data.data.calories
 		id("flags").innerText = data.data.flags
@@ -85,7 +92,7 @@ else {
 		
 		if (data.data.items.length > 0)
 		{
-			var html = "<table class='table table-bordered'>";
+			var html = "<table class='table'>";
 			html += "<thead><tr><th>item</th><th>amount</th></tr></thead><tbody>";
 			for (var i = 0; i < data.data.items.length; i++)
 			{

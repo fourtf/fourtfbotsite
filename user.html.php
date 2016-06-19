@@ -1,4 +1,4 @@
-<h2>View stats by username</h2>
+<h2>View Stats by Username</h2>
 <div class="row">
     <div class="col md-8"><input autofocus id="userinput" type="text" class="form-control" placeholder="username" /></div>
     <div class="col md-2"><a id="userlink" href="#"><div class="btn" id="viewbutton">View</div></a><br /></div>
@@ -7,7 +7,7 @@
 <br />
 <h3 id="name"></h3>
 <div class="row">
-    <div class="col md-6"><table id="stats" style="display:none" class="table table-bordered">
+    <div class="col md-6"><table id="stats" style="display:none" class="table">
     <thead><th>stat</th><th>value</th></thead>
     <tbody>
         <tr><td>points</td><td id="points"></td></tr>

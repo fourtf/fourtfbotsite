@@ -31,6 +31,11 @@ else {
 	if (data.success) {
 		id("stats").style.display = ""
 		id("name").innerText = data.data.name
+		window.document.title = data.data.name + " - nice bot bro";
+		//var seconds = (Date.now() / 1000 | 0) - (data.timestamp / 1000 | 0)
+		//if (seconds > 0)
+		//  id("name").innerText += " (" + seconds + ") seconds ago";
+		
 		id("points").innerText = data.data.points
 		id("calories").innerText = data.data.calories
 		id("flags").innerText = data.data.flags
@@ -40,7 +45,7 @@ else {
 		
 		if (data.data.items.length > 0)
 		{
-			var html = "<table class='table table-bordered'>";
+			var html = "<table class='table'>";
 			html += "<thead><tr><th>item</th><th>amount</th></tr></thead><tbody>";
 			for (var i = 0; i < data.data.items.length; i++)
 			{

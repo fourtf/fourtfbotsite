@@ -1,2 +1,2 @@
-<h2>Recipes available for crafting</h2>
+<h2>Recipes available for Crafting</h2>
 <div id="results"></div>

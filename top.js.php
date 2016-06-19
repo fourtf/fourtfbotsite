@@ -1,9 +1,9 @@
 selectHeaderItem("Top")
 
 var error = <?php
-if (!empty($_GET['handler']))
-{
+
 $fp = fsockopen("127.0.0.1", 5200, $errno, $errstr, 10);
+$param = strtolower(isset($_GET['handler']) ? $_GET['handler'] : 'pointz');
 
 if (!$fp)
 {
@@ -12,16 +12,12 @@ if (!$fp)
 else
 {
 	echo 'false; var data = ';
-	fwrite($fp, "TOP ".$_GET['handler']);
+	
+	fwrite($fp, "TOP ".$param);
 	while (!feof($fp)) {
-	   echo fgets($fp, 128);
+		echo fgets($fp, 128);
 	}
 	fclose($fp);
-}
-}
-else
-{
-echo "true;";
 }
 
 echo "; ";
@@ -33,12 +29,12 @@ if (!$fp)
 }
 else
 {
-        echo 'var data2 = ';
-        fwrite($fp, "list items");
-        while (!feof($fp)) {
-           echo fgets($fp, 128);
-        }
-        fclose($fp);
+	echo 'var data2 = ';
+	fwrite($fp, "list items");
+	while (!feof($fp)) {
+		echo fgets($fp, 128);
+	}
+	fclose($fp);
 }
 ?>
 
@@ -46,10 +42,11 @@ if (error) {
 }
 else {
 	if (data.success) {
-		id("name").innerText = "<?php echo $_GET['handler']; ?>"
+		id("name").innerText = "<?php echo $param; ?>"
+		window.document.title = "top <?php echo $param; ?> - nice bot bro";
 		if (data.data.length > 0)
 		{
-			var html = "<table class='table table-bordered'>";
+			var html = "<table class='table'>";
 			html += "<thead><tr><th>#</th><th>user</th><th>amount</th></tr></thead><tbody>";
 			for (var i = 0; i < data.data.length; i++)
 			{
@@ -69,9 +66,9 @@ else {
 if (data2.success)
 {
 	for (var i = 0; i < data2.data.length; i++)
-        {
-		id("userinput").innerHTML += "<option>" + data2.data[i] + "</option>"
-        }
+	{
+		id("userinput").innerHTML += "<option" + (data2.data[i] == "<?php echo $param; ?>" ? " selected" : "") + ">" + data2.data[i] + "</option>";			
+	}
 }
 
 id("userinput").onchange = changed;
